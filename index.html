@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQueryGenerator</title>
+    <script  src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#go_button").click(function(){
+              var number_of_rows = $('#rows').val();
+              var number_of_cols = 1;
+              var table_body = '<table border="1">';
+              for(var i=0;i<number_of_rows;i++){
+                table_body+='<tr>';
+                table_body +='<td>';
+                table_body += i+1;
+                table_body +='</td>';
+                for(var j=0;j<number_of_cols;j++){
+                    table_body +='<td>';
+                    table_body +='Akshay Palekar';
+                    table_body +='</td>';
+                }
+                table_body+='</tr>';
+              }
+                table_body+='</table>';
+               $('#tableDiv').html(table_body);
+               $('#rows').val('');  
+            });
+        });
+
+        $(document).ready(function(){
+            $("#shade_row").click(function(){
+                $("tr:nth-child(even)").css({"background-color":"#ddd"}); 
+            });
+        });
+
+        $(document).ready(function(){
+            $("#dark_line").click(function(){
+                $("tr:nth-of-type(10n+0) td ").css({"border-bottom": "5px solid #000000"}); 
+            });
+        });
+        
+        $(document).ready(function(){
+            $("#reset").click(function(){
+                $("tr:nth-child(even)").css({"background-color":""});
+                $("tr:nth-of-type(10n+0) td").css({"border-bottom": ""});
+            });
+        });
+    </script>
+</head>
+<body>
+<div style="margin-top: 50px; margin-left: 250px">
+    <input type="text"  id="rows" autofocus type="number">
+    <button id="go_button">Go</button>
+    <br>
+    <br>
+    <button id="shade_row">Shade Every Other Row</button>
+    <br>
+    <br>
+    <button id="dark_line">Show Dark Line Every 10 Rows</button>
+    <br>
+    <br>
+    <button id="reset">Reset</button>
+    <div id="tableDiv" style="margin-top: 40px">
+        "Table will be generated here"
+    </div>
+</div>
+</body>
+</html>
